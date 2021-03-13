@@ -9,6 +9,14 @@
         <Label Text="{Binding Text}" FontSize="Small"/>
         <Label Text="Description:" FontSize="Medium" />
         <Label Text="{Binding Description}" FontSize="Small"/>
+        <Button Margin="0,10,0,0" Text="Open about page"
+                Command="{Binding OpenAboutCommand}"
+                BackgroundColor="{StaticResource Primary}"
+                TextColor="White" />
+        <Button Margin="0,10,0,0" Text="Go to root &amp; open about page"
+                Command="{Binding GoToRootAndOpenAboutCommand}"
+                BackgroundColor="{StaticResource Primary}"
+                TextColor="White" />
     </StackLayout>
     
 </ContentPage>

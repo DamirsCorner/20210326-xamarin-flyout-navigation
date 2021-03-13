@@ -1,7 +1,9 @@
 ﻿using ShellFlyoutItemNavigation.Models;
+using ShellFlyoutItemNavigation.Views;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace ShellFlyoutItemNavigation.ViewModels
@@ -12,6 +14,21 @@ namespace ShellFlyoutItemNavigation.ViewModels
         private string itemId;
         private string text;
         private string description;
+
+        public ItemDetailViewModel()
+        {
+            OpenAboutCommand = new Command(async () => await Shell.Current.GoToAsync($"//{nameof(AboutPage)}"));
+            GoToRootAndOpenAboutCommand = new Command(async () =>
+            {
+                await Shell.Current.GoToAsync($"///{nameof(ItemsPage)}", false);
+                await Shell.Current.GoToAsync($"///{nameof(AboutPage)}");
+            });
+        }
+
+        public ICommand OpenAboutCommand { get; }
+
+        public ICommand GoToRootAndOpenAboutCommand { get; }
+
         public string Id { get; set; }
 
         public string Text
